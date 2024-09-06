@@ -5,12 +5,10 @@ phases:
     commands:
       - echo Installing dependencies
       - npm install
-  pre_build:
-    commands:
-      - echo Preparing to run
   build:
     commands:
-      - echo No build step needed
+      - echo Building the project
+      - npm run build
   post_build:
     commands:
       - echo Build and deployment completed
