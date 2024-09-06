@@ -1,29 +1,20 @@
-version: 0.2
+version: 0.2 
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 20
+    #runtime-versions:
+      #nodejs: 20
     commands:
-      - yarn install
-
+      - echo "Installing dependencies..."
+      - npm install
+      - npm audit fix
+  pre_build:
+    commands:
+      - echo "Installed all dependencies..."
   build:
     commands:
-      - yarn build
-      - mkdir -p output
-      - cp -r node_modules output/
-      - cp -r index.js output/
-      - cd output
-      - zip -r ../output.zip .
-      - cd ..
-
+      - echo "Building the Lambda function..."
+      - zip -r function.zip ./*
   post_build:
     commands:
-      - echo "Build completed on `date`"
-      - echo "Deploying to AWS Lambda"
-      # Replace `my-lambda-function` with your Lambda function name
-      - aws lambda update-function-code --function-name my-lambda-function --zip-file fileb://output.zip
-
-artifacts:
-  files:
-    - output.zip
+      - aws lambda update-function-code --function-name api --zip-file fileb://function.zip
