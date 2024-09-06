@@ -10,11 +10,10 @@ phases:
   build:
     commands:
       - yarn build
-      # Add packaging commands if necessary
+      # Package the Lambda function
       - mkdir -p output
       - cp -r node_modules output/
       - cp -r index.js output/
-      # Zip the output folder to create a deployment package
       - cd output
       - zip -r ../output.zip .
       - cd ..
