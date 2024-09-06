@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "node index.js",
+    "build": "tsc",
     "test": "echo \"No test specified\" && exit 0"
   },
   "author": "Your Name",
