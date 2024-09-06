@@ -1,6 +1,16 @@
 {
+  "name": "test-lambda",
+  "version": "1.0.0",
+  "description": "A simple Lambda function with Express",
+  "main": "index.js",
   "dependencies": {
     "express": "^4.19.2",
     "serverless-http": "^3.2.0"
-  }
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "author": "Your Name",
+  "license": "ISC"
 }
