@@ -6,6 +6,26 @@ phases:
       nodejs: 20
     commands:
       - yarn install
-build:
+
+  build:
     commands:
       - yarn build
+      # Add packaging commands if necessary
+      - mkdir -p output
+      - cp -r node_modules output/
+      - cp -r index.js output/
+      # Zip the output folder to create a deployment package
+      - cd output
+      - zip -r ../output.zip .
+      - cd ..
+
+  post_build:
+    commands:
+      - echo "Build completed on `date`"
+      - echo "Deploying to AWS Lambda"
+      # Replace `my-lambda-function` with your Lambda function name
+      - aws lambda update-function-code --function-name my-lambda-function --zip-file fileb://output.zip
+
+artifacts:
+  files:
+    - output.zip
