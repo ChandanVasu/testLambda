@@ -10,7 +10,7 @@ phases:
   build:
     commands:
       - yarn build
-      # Package the Lambda function
+      # Package the Lambda functio
       - mkdir -p output
       - cp -r node_modules output/
       - cp -r index.js output/
